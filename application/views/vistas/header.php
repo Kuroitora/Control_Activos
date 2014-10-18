@@ -8,14 +8,14 @@
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>scripts/jquery.dataTables.min.css"/>
     <script src="<?php echo base_url(); ?>scripts/plugins/dataTables/jquery.dataTables.min.js"></script>
-
+    <script src="<?php echo base_url(); ?>scripts/funciones.js"></script>
 
 	<link href="<?php echo base_url(); ?>bootstrap/css/bootstrap-theme.css" type="text/css" rel="stylesheet" >
     <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" >
 
 
 
-    <script>
+<!--    <script>
     var cont = 1;
     $(document).ready(function () {
         $(".dropdown-menu li a").click(function(){
@@ -50,6 +50,30 @@
             });
         })
     </script>
+-->
+<script>
+      $(document).ready(function () {
+            $('#tbActivos').dataTable( {
+                "language": {
+                    "url": "<?php echo base_url(); ?>/scripts/plugins/dataTables/Spanish.txt"
+                }
+            });
+        })
+</script>
+
+<script>
+   $(document).ready(function () {
+    $('#menu').li('active');
+  })
+
+</script>
+
+<script>
+function ventana(){
+    window.showModalDialog("<?php echo base_url();?>index.php/auditoria/crear/", "dialogWidth:200px; dialogHeight:200px; dialogLeft:300px;");
+}
+</script>
+
 </head>
 <body>
 	<div class="page-header">
@@ -67,10 +91,11 @@
         <!--<a class="navbar-brand" href="#">Company Info</a>-->
     </div>
     <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" id="menu">
             <li class="active"><a href="<?php echo base_url();?>index.php/ctrLogin/principal/">Principal</a></li>
             <li><a href="<?php echo base_url();?>index.php/ctrLogin/historial/">Historial</a></li>
         </ul>
+
         <ul class="nav navbar-nav navbar-right">
             <li><a href="<?php echo base_url();?>index.php/ctrLogin/login/">Salir</a></li>
         </ul>

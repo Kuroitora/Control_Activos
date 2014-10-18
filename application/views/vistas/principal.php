@@ -61,6 +61,8 @@
 			        <div class="btn-group">
 			        	<h3></h3>
 			            <button type="submit" id="btnAudtoria" class="btn btn-primary">Crear Auditoría</button>
+			              <button onclick="ventna()">df</button>
+
 			        </div>
 
 			    	</center>

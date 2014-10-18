@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,14 +15,15 @@
   
 </head>
 <body>
-  <div class="row">
+  
    <center>
     
       <div class="container">
-         
+        <div class="row">
         <img src="<?php echo base_url();?>resources/images/tec.jpg">
         
-        <form class="form-signin col-md-12" action="<?php echo base_url();?>index.php/ctrLogin/principal/" method="POST">
+        <!--<form class="form-signin col-md-12" action="<?php echo base_url();?>index.php/ctrLogin/principal/" method="POST">-->
+        <form class="form-signin col-*-*" action="<?php echo base_url();?>index.php/ctrLogin/principal/" method="POST">
           <div class="form-group">
             <input type="text" class="form-control input-lg" placeholder="Usuario">
           </div>
@@ -33,7 +35,7 @@
               <span class="pull-right"><a href="#">Registrarse</a></span>
           </div>
        </form>
-
+        </div> <!--row-->
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <!--  <script src="../../dist/js/bootstrap.min.js"></script>-->
@@ -41,7 +43,7 @@
     </div> <!-- /container -->
 
   </center>
-  </div>
+  
   
 </body>
 </html>

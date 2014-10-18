@@ -53,8 +53,7 @@
 </head>
 <body>
 	<div class="page-header">
-	   <h1>Tecnológico de Costa Rica
-	      <small>Control de Activos</small>
+	   <h1><img src="<?php echo base_url();?>resources/images/header.jpg" class="img-responsive">
 	   </h1>
 	</div>
 	<div class="navbar navbar-default">

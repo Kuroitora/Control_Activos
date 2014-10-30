@@ -6,6 +6,10 @@ class ctrLogin extends CI_Controller{
 	}
 
 	public function principal(){
+		$data['user'] = $_POST['inputUsuario'];
+     	$data['pass'] = $_POST['inputPass'];
+
+     	$this->load->model('model_login');
 		$this->load->view('vistas/principal');
 	}
 

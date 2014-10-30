@@ -25,10 +25,10 @@
         <!--<form class="form-signin col-md-12" action="<?php echo base_url();?>index.php/ctrLogin/principal/" method="POST">-->
         <form class="form-signin col-*-*" action="<?php echo base_url();?>index.php/ctrLogin/principal/" method="POST">
           <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="Usuario">
+            <input type="text" id="inputUsuario" class="form-control input-lg" placeholder="Usuario">
           </div>
           <div class="form-group">
-              <input type="password" class="form-control input-lg" placeholder="Contraseña">
+              <input type="password" id="inputPass" class="form-control input-lg" placeholder="Contraseña">
           </div>
           <div class="form-group">
               <button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar sesión</button>

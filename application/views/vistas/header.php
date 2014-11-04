@@ -6,9 +6,12 @@
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>scripts/jquery.dataTables.min.css"/>
     <script src="<?php echo base_url(); ?>scripts/plugins/dataTables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url(); ?>scripts/funciones.js"></script>
+     <script src="<?php echo base_url(); ?>scripts/login.js"></script>
+
 
 	<link href="<?php echo base_url(); ?>bootstrap/css/bootstrap-theme.css" type="text/css" rel="stylesheet" >
     <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" >

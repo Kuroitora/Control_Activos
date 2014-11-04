@@ -7,6 +7,20 @@
 	   
     <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap-theme.css" type="text/css" rel="stylesheet" >
     <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" >
+  
+<script language="javascript">
+<!--//
+/*This Script allows people to enter by using a form that asks for a
+UserID and Password*/
+function pasuser(form) {
+if (form.inputUsuario.value=="" || form.inputPass.value=="") { 
+            
+alert("No deje espacios en blanco");
+} 
+} 
+//-->
+</script>
+    
   <div class="page-header">
      <img src="<?php echo base_url();?>resources/images/header.jpg" class="img-responsive">
         
@@ -15,55 +29,42 @@
   
 </head>
 <body>
-<<<<<<< HEAD
-  
+ <!-- <div class="container">
+  <div class="row">
+        <div class="com-md-12">
+          <div class="notification login-alert">
+            Please Enter Your Username And Password!
+          </div>
+        </div>
+  </div>
+  </div>-->
    <center>
     
       <div class="container">
         <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
         <img src="<?php echo base_url();?>resources/images/tec.jpg">
-        
         <!--<form class="form-signin col-md-12" action="<?php echo base_url();?>index.php/ctrLogin/principal/" method="POST">-->
-        <form class="form-signin col-*-*" action="<?php echo base_url();?>index.php/ctrLogin/principal/" method="POST">
+       
+       <!-- <div class="well login-box" >-->
+        <form class="form-signin col-*-*" action="<?php echo base_url();?>index.php/auditoria/principal/" method="POST">
           <div class="form-group">
-            <input type="text" id="inputUsuario" class="form-control input-lg" placeholder="Usuario">
+            <input type="text" value="" id="inputUsuario" name="inputUsuario" class="form-control input-lg" placeholder="Usuario">
           </div>
           <div class="form-group">
-              <input type="password" id="inputPass" class="form-control input-lg" placeholder="Contraseña">
+              <input type="password" value="" id="inputPass" name="inputPass" class="form-control input-lg" placeholder="Contraseña">
           </div>
           <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar sesión</button>
+              <input type="submit" class="btn btn-primary btn-lg " value="Iniciar sesión"></input>
               <span class="pull-right"><a href="#">Registrarse</a></span>
           </div>
        </form>
+     <!--</div> well login-box-->
+     </div>
+     </div>
         </div> <!--row-->
-=======
-  <div class="row">
-    <div class="container">
-      <center>
-        <img src="<?php echo base_url();?>resources/images/tec.jpg">
-        <br>
-        <br>
-      </center>
-  
-      <form class="form-signin col-md-12" action="<?php echo base_url();?>index.php/ctrLogin/principal/" method="POST">
-        <div class="form-group">
-          <input type="text" class="form-control input-lg" placeholder="Usuario">
-         <br> 
-         <br> 
-         </div>
 
-        <div class="form-group">
-            <input type="password" class="form-control input-lg" placeholder="Contraseña">
-          <br> 
-          <br>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar sesión</button>
-            <!--<span class="pull-right"><a href="#">Registrarse</a></span>-->
-        </div>
-    </form>
->>>>>>> origin/Pamela
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <!--  <script src="../../dist/js/bootstrap.min.js"></script>-->

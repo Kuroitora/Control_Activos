@@ -23,18 +23,21 @@ class auditoria extends CI_Controller{
             $sede = $this->input->post('sede');
             $edificios = $this->model_auditoria->obtener_edificios($sede);
             $cont=0;
+            if(!$edificios){
+            ?>
+                <option value="0">No hay edificios</option>
+            <?php
+            return;
+            }
+            ?>
+                <option value="0">Seleccione un edificio</option>
+            <?php
             foreach($edificios as $fila)
             {$cont++;
             ?>
                 <option value="<?=$fila->id?>"><?=$fila->nombre?></option>
             <?php
-            }
-
-           if($cont==0){
-            ?>
-                <option value="0">No hay edificios</option>
-            <?php
-            }
+            }      
 
         }
     }
@@ -46,16 +49,19 @@ class auditoria extends CI_Controller{
             $edificio = $this->input->post('edificio');
             $pisos = $this->model_auditoria->obtener_pisos($edificio);
             $cont=0;
+            if(!$pisos){
+            ?>
+                <option value="0">No hay pisos</option>
+            <?php
+                return;
+            }
+            ?>
+                <option value="0">Seleccione un piso</option>
+            <?php
             foreach($pisos as $fila)
             {$cont++;
             ?>
                 <option value="<?=$fila->id?>"><?=$fila->nombre?></option>
-            <?php
-            }
-
-           if($cont==0){
-            ?>
-                <option value="0">No hay pisos</option>
             <?php
             }
 
@@ -69,6 +75,13 @@ class auditoria extends CI_Controller{
             $piso = $this->input->post('piso');
             $salas = $this->model_auditoria->obtener_salas($piso);
             $cont=0;
+            if(!$salas){
+            ?>
+                <option value="0">No hay salas</option>
+
+            <?php
+                return;
+            }
             ?>
              <option value="0">Seleccione una sala</option>
             <?php
@@ -76,13 +89,6 @@ class auditoria extends CI_Controller{
             {$cont++;
             ?>
                 <option value="<?=$fila->id?>"><?=$fila->nombre?></option>
-            <?php
-            }
-
-           if($cont==0){
-            ?>
-                <option value="0">No hay salas</option>
-
             <?php
             }
 

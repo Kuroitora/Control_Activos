@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2014 a las 06:49:58
+-- Tiempo de generación: 11-11-2014 a las 18:02:49
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.9
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `activo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombreActivo` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `estado` bit(1) NOT NULL,
   `idSala` int(11) NOT NULL,
   `codigo` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -40,17 +41,17 @@ CREATE TABLE IF NOT EXISTS `activo` (
 -- Volcado de datos para la tabla `activo`
 --
 
-INSERT INTO `activo` (`id`, `nombreActivo`, `idSala`, `codigo`) VALUES
-(1, 'Tablet Apple', 1, 123564),
-(2, 'Tablet Samsung', 1, 234256),
-(3, 'Tablet Apple', 1, 434234),
-(4, 'Tablet Samsung', 1, 324231),
-(5, 'Tablet Samsung', 1, 234200),
-(6, 'Tablet Samsung', 1, 324230),
-(7, 'Computadora Mac', 1, 434290),
-(8, 'Computadora Mac', 1, 320831),
-(9, 'Computadora Mac', 1, 200200),
-(10, 'Computadora Mac', 1, 324223);
+INSERT INTO `activo` (`id`, `nombreActivo`, `estado`, `idSala`, `codigo`) VALUES
+(1, 'Tablet Apple', b'1', 1, 123564),
+(2, 'Tablet Samsung', b'1', 1, 234256),
+(3, 'Tablet Apple', b'1', 1, 434234),
+(4, 'Tablet Samsung', b'0', 1, 324231),
+(5, 'Tablet Samsung', b'1', 1, 234200),
+(6, 'Tablet Samsung', b'1', 1, 324230),
+(7, 'Computadora Mac', b'1', 1, 434290),
+(8, 'Computadora Mac', b'1', 1, 320831),
+(9, 'Computadora Mac', b'1', 1, 200200),
+(10, 'Computadora Mac', b'1', 1, 324223);
 
 -- --------------------------------------------------------
 
@@ -68,7 +69,15 @@ CREATE TABLE IF NOT EXISTS `auditoria` (
   PRIMARY KEY (`id`),
   KEY `idSala_sala_auditoria` (`idSala`),
   KEY `idUsuario_usuario_auditoria` (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Volcado de datos para la tabla `auditoria`
+--
+
+INSERT INTO `auditoria` (`id`, `estado`, `fecha`, `comentario`, `idUsuario`, `idSala`) VALUES
+(6, b'0', '2014-11-11', '', 1, 1),
+(7, b'1', '2014-11-11', 'Auditoría de prueba', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -87,7 +96,31 @@ CREATE TABLE IF NOT EXISTS `auditoria-activo` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uq_idActivo_idAuditoria` (`idAuditoria`,`idActivo`),
   KEY `idActivo_activo` (`idActivo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=118 ;
+
+--
+-- Volcado de datos para la tabla `auditoria-activo`
+--
+
+INSERT INTO `auditoria-activo` (`id`, `idAuditoria`, `idActivo`, `calCualitativa`, `calCuantitativa`, `estado`, `comentario`) VALUES
+(100, 6, 1, '0', 10, b'1', ''),
+(101, 6, 2, '0', 10, b'1', ''),
+(102, 6, 3, '0', 10, b'1', ''),
+(103, 6, 5, '0', 10, b'1', ''),
+(104, 6, 6, '0', 10, b'1', ''),
+(105, 6, 7, '0', 10, b'1', ''),
+(106, 6, 8, '0', 10, b'1', ''),
+(107, 6, 9, '0', 10, b'1', ''),
+(108, 6, 10, '0', 10, b'1', ''),
+(109, 7, 1, '1', 4, b'1', 'No se encuentra bien'),
+(110, 7, 2, '0', 10, b'1', ''),
+(111, 7, 3, '0', 2, b'1', 'asd'),
+(112, 7, 5, '1', 6, b'1', ''),
+(113, 7, 6, '0', 10, b'1', ''),
+(114, 7, 7, '0', 10, b'1', 'lol'),
+(115, 7, 8, '0', 10, b'1', ''),
+(116, 7, 9, '1', 3, b'1', 'hola'),
+(117, 7, 10, '0', 10, b'1', '');
 
 -- --------------------------------------------------------
 

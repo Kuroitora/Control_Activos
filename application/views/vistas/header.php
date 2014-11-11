@@ -98,7 +98,7 @@ function ventana(){
     <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav" id="menu">
             <li class="active"><a href="<?php echo base_url();?>index.php/auditoria/principal/">Principal</a></li>
-            <li><a href="<?php echo base_url();?>index.php/ctrLogin/historial/">Historial</a></li>
+            <li><a href="<?php echo base_url();?>index.php/auditoria/historial/">Historial</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

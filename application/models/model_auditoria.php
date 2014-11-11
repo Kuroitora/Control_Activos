@@ -72,4 +72,43 @@ class model_auditoria extends CI_Model{
 
      }
 
+      function obtener_auditorias(){
+         $this->db->select('auditoria.id, auditoria.estado, auditoria.fecha, sala.nombre AS sala, piso.nombre AS piso, edificio.nombre AS edificio, sede.nombre AS sede');
+         $this->db->from('auditoria');
+         $this->db->join('sala', 'sala.id = auditoria.idSala');
+         $this->db->join('piso', 'piso.id = sala.idPiso');
+         $this->db->join('edificio', 'edificio.id = piso.idEdificio');
+         $this->db->join('sede', 'sede.id = edificio.idSede');
+         $this->db->distinct();
+         $query = $this->db->get(); 
+
+         if($query){
+               return $query->result();
+         }else{
+               return "No hay auditorías";
+         }
+     }
+
+     function obtener_activos($id){
+          /*$this->db->select('auditoria-activo.calCualitativa, auditoria-activo.calCuantitativa, auditoria-activo.estado AS est, auditoria-activo.comentario AS comentarioAA, activo.id, activo.estado, activo.nombreActivo, auditoria.comentario');
+          $this->db->from('auditoria');
+          $this->db->where('auditoria.id',$id);
+          $this->db->join('auditoria-activo', 'auditoria-activo.idAuditoria = auditoria.id');
+          $this->db->join('activo', 'activo.id = auditoria-activo.idActivo');
+          $this->db->distinct();
+          $query = $this->db->get();*/
+          $this->db->like('auditoria-activo.idAuditoria',$id);
+          $this->db->select('auditoria-activo.calCualitativa, auditoria-activo.calCuantitativa, auditoria-activo.estado AS est, auditoria-activo.comentario AS comentarioAA, activo.id, activo.estado, activo.nombreActivo, auditoria.comentario');
+          $this->db->from('auditoria-activo');
+          $this->db->join('auditoria', 'auditoria.id = auditoria-activo.idAuditoria');
+          $this->db->join('activo', 'activo.id = auditoria-activo.idActivo');
+          $this->db->distinct();
+          $query = $this->db->get();
+          if($query){
+               return $query->result();
+         }else{
+               return "No hay auditorías";
+         }
+     }
+
 }

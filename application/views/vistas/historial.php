@@ -1,5 +1,15 @@
 <html>
 <?php $this->load->view("vistas/header");?>
+
+<script>
+    function confirma(){
+          if (confirm("¿Realmente desea eliminarlo?")){ 
+              alert("El registro ha sido eliminado.") }
+              else { 
+              return false
+          }
+      }
+</script>
 <body>
 	<div class="container">
 		<center>
@@ -15,49 +25,64 @@
             <table id="tbActivos" class="display">
                 <thead>
 					<tr>
-						<th>Activos</th>
 						<th>Fecha</th>
 						<th>Sede</th>
 						<th>Edificio</th>
 						<th>Piso</th>
 						<th>Sala</th>
 						<th>Estado</th>
+                        <th></th>
 					</tr>
                 </thead>
                 <tbody>
-                    <?php for ($i=1; $i <= 20; $i++): ?>
+                    <?php foreach ($auditorias as $fila)
+                    {
+                    ?>
                     <tr>
                         
                         <td>
-                        	Activo <?php echo $i; ?>
+							<?php echo $fila->fecha;?>
                         </td>
-                        
+                            
                         <td>
-							a 
-                        </td>
-
-                        <td>
-							a
+							<?php echo $fila->sede;?>
                         </td>
 
                         <td>
-							a
+							<?php echo $fila->edificio;?>
                         </td>
 
                         <td>
-							a
+							<?php echo $fila->piso;?>
                         </td>
 
                         <td>
-							a
+							<?php echo $fila->sala;?>
                         </td>
 
                         <td>
-							a
+							<?php if($fila->estado == 0){ ?>
+                            Incompleta
+                            <?php       }
+                            else{
+                            ?>
+                             Completa
+                            <?php }?>
+                        </td>
+                        <td>
+                            <?php if($fila->estado == 0){ ?>
+                            <a href="<?=base_url()?>index.php/auditoria/crear/">Editar</a> 
+                            <?php       }
+                            else{
+                            ?>
+                             <a href="<?=base_url()?>index.php/auditoria/auditorias/<?php echo $fila->id;?>">Ver</a> 
+                            <?php }?>
                         </td>
                     </tr>
                          
-                    <?php endfor; ?>
+                    <?php 
+                    } 
+                    ?>
                 </tbody>
             </table>
         </div>

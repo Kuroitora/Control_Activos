@@ -173,6 +173,14 @@ class auditoria extends CI_Controller{
         redirect(base_url().'index.php/auditoria/principal','refresh');
     }
 
+    public function historial(){
+        $data['auditorias'] = $this->model_auditoria->obtener_auditorias();
+        $this->load->view('vistas/historial',$data);
+    }
 
+    public function auditorias($id){
+        $data['activos'] = $this->model_auditoria->obtener_activos($id);
+        $this->load->view('vistas/auditoria_completa',$data);
+    }
 
 }

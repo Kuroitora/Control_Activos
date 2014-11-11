@@ -78,12 +78,15 @@ function ventana(){
 </script>
 
 </head>
+
 <body>
+    <div class="container">
+
 	<div class="page-header">
 	   <h1><img src="<?php echo base_url();?>resources/images/header.jpg" class="img-responsive">
 	   </h1>
 	</div>
-	<div class="navbar navbar-default">
+	<div class="container navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
             <span class="icon-bar"></span>
@@ -94,7 +97,7 @@ function ventana(){
     </div>
     <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav" id="menu">
-            <li class="active"><a href="<?php echo base_url();?>index.php/ctrLogin/principal/">Principal</a></li>
+            <li class="active"><a href="<?php echo base_url();?>index.php/auditoria/principal/">Principal</a></li>
             <li><a href="<?php echo base_url();?>index.php/ctrLogin/historial/">Historial</a></li>
         </ul>
 
@@ -102,6 +105,8 @@ function ventana(){
             <li><a href="<?php echo base_url();?>index.php/ctrLogin/login/">Salir</a></li>
         </ul>
     </div>
-</div>
+    </div>
+
+    </div>
 </body>
 </html>

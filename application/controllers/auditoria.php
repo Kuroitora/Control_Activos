@@ -103,15 +103,27 @@ class auditoria extends CI_Controller{
     
 
 	public function crear(){
-		
-		$this->load->view('vistas/auditoria');
+		/*$data['sede'] = $_POST['slSedes'];
+        $data['edificio'] = $_POST['slEdificios'];
+        $data['piso'] = $_POST['slPisos'];
+        $data['sala'] = $_POST['slSalas'];*/
+        $data['estado'] = 0;
+        $data['fecha'] = date('Y-m-d');;
+        $data['comentario'] = null;
+        $data['idUsuario'] = $this->session->userdata('idUser');
+        $data['idSala'] = $_POST['slSalas'];
+        $data['activos'] = $this->model_auditoria->crear_auditoria($data);
+		$this->load->view('vistas/auditoria',$data);
 	}
 
 
     public function principal(){
-        $data['user'] = $_POST['inputUsuario'];
-        $data['pass'] = $_POST['inputPass'];
-        $query = $this->model_login->login($data);
+       if($this->session->userdata('is_logged_in')!=true){
+            $data['user'] = $_POST['inputUsuario'];
+            $data['pass'] = $_POST['inputPass'];
+            $query = $this->model_login->login($data);
+
+        
         if($query){ //Si el usuario fue validado correctamente
             $sedes = $this->model_auditoria->obtener_sede();
             foreach($query->result() as $row){
@@ -130,8 +142,37 @@ class auditoria extends CI_Controller{
             $msjValidate['msjValidate']=1;
             $this->load->view('vistas/login',$msjValidate);
         }
+     }else{
+        $sedes = $this->model_auditoria->obtener_sede();
+        $allSedes = array(
+                'sede' => $sedes
+                );
+        $this->load->view('vistas/principal',$allSedes);
+     }
 
     }
+
+    public function eliminarAuditoria(/*$id*/){
+        $id = $this->input->post('id');
+        $this->model_auditoria->borrar_auditoria($id);
+       // $this->load->view('vistas/principal');
+        redirect(base_url().'index.php/auditoria/principal','refresh');
+    }
+
+    public function realizarAuditoria(){
+        $datos = $this->input->post('TableData');
+        $comentario = $this->input->post('comentarioAuditoria');
+        $this->model_auditoria->reailizar_auditoria($datos,$comentario);
+        redirect(base_url().'index.php/auditoria/principal','refresh');
+    }
+
+     public function guardarAuditoria(){
+        $datos = $this->input->post('TableData');
+        $comentario = $this->input->post('comentarioAuditoria');
+        $this->model_auditoria->guardar_auditoria($datos,$comentario);
+        redirect(base_url().'index.php/auditoria/principal','refresh');
+    }
+
 
 
 }
